@@ -14,14 +14,13 @@ renderer.code = (code, language) => {
 }
 
 export default function renderMarkdown(text) {
-    console.log(text);
     const html = marked(text, { renderer: renderer }).replace(/^\t{3}/gm, '');
-    console.log(html);
     if (process.env.npm_lifecycle_script.startsWith('sapper export') === false) {
       return html;
     }
 
     const dom = parse(html);
+    console.log(dom.outerHTML);
     const images = dom.querySelectorAll("img");
     const prefix = `https://cloud.squidex.io/api/assets/${process.env.SQUIDEX_PROJECT}/`;
 
