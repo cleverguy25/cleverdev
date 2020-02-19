@@ -12,11 +12,11 @@
     "test": "run-p --race dev cy:run"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
     "compression": "^1.7.1",
     "date-fns": "^2.9.0",
     "marked": "^0.8.0",
     "node-fetch": "^2.6.0",
-    "node-html-parser": "^1.2.4",
     "polka": "next",
     "prismjs": "^1.19.0",
     "reading-time": "^1.2.0",
