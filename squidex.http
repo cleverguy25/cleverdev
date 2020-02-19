@@ -22,11 +22,5 @@ GET https://cloud.squidex.io/api/content/cleverdev/posts/844c3ca4-47a0-437d-910c
 Authorization: Bearer {{accessToken}}
 X-Flatten: true
 
-# $env:SQUIDEX_CLIENT_ID="5e33e480d6c2080001c91a7d"
-# $env:SQUIDEX_SECRET="fazsugjn9wekkbfrb6fs89rn41jyt5zhohtnyv7ovvkx"
-
-# export SQUIDEX_CLIENT_ID="5e33e480d6c2080001c91a7d"
-# export SQUIDEX_SECRET="fazsugjn9wekkbfrb6fs89rn41jyt5zhohtnyv7ovvkx"
-
 ###
 HEAD https://cloud.squidex.io/api/assets/cleverdev/5219ba09-30b8-4b2f-a0d8-c6a92d50804d/about.jpg?version=0
