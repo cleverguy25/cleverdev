@@ -8,10 +8,8 @@ require('prismjs/components/prism-jsx.min');
 
 const renderer = new marked.Renderer();
 renderer.code = (code, language) => {
-  console.log(code);
   const parser = prism.languages[language] || prism.languages.html;
   const highlighted = prism.highlight(code, parser, language)
-  console.log(highlighted);
   return `<pre class="language-${language}"><code class="language-${language}">${highlighted}</code></pre>`
 }
 
@@ -43,6 +41,7 @@ export default function renderMarkdown(text) {
       }
     }
 
+    console.log(dom.outerHTML);
     return dom.outerHTML;
 }
 
