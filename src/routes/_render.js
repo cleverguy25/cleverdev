@@ -19,8 +19,8 @@ export default function renderMarkdown(text) {
       return html;
     }
 
-    const dom = parse(html);
-    console.log(dom.outerHTML);
+    const dom = parse(html, { pre: true });
+    
     const images = dom.querySelectorAll("img");
     const prefix = `https://cloud.squidex.io/api/assets/${process.env.SQUIDEX_PROJECT}/`;
 
