@@ -14,7 +14,9 @@ renderer.code = (code, language) => {
 }
 
 export default function renderMarkdown(text) {
+    console.log(text);
     const html = marked(text, { renderer: renderer }).replace(/^\t{3}/gm, '');
+    console.log(html);
     if (process.env.npm_lifecycle_script.startsWith('sapper export') === false) {
       return html;
     }
@@ -41,7 +43,6 @@ export default function renderMarkdown(text) {
       }
     }
 
-    console.log(dom.outerHTML);
     return dom.outerHTML;
 }
 
