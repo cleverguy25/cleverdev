@@ -2,7 +2,7 @@
 POST https://cloud.squidex.io/identity-server/connect/token
 Content-Type: application/x-www-form-urlencoded
 
-grant_type=client_credentials&client_id=5e33e480d6c2080001c91a7d&client_secret=fazsugjn9wekkbfrb6fs89rn41jyt5zhohtnyv7ovvkx&scope=squidex-api
+grant_type=client_credentials&client_id={{squidex_clientid}}&client_secret={{squidex_secret}}&scope=squidex-api
 
 @accessToken = {{authorization.response.body.$.access_token}}
 
