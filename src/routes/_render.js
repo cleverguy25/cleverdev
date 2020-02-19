@@ -8,8 +8,10 @@ require('prismjs/components/prism-jsx.min');
 
 const renderer = new marked.Renderer();
 renderer.code = (code, language) => {
-  const parser = prism.languages[language] || prism.languages.html
+  console.log(code);
+  const parser = prism.languages[language] || prism.languages.html;
   const highlighted = prism.highlight(code, parser, language)
+  console.log(highlighted);
   return `<pre class="language-${language}"><code class="language-${language}">${highlighted}</code></pre>`
 }
 
