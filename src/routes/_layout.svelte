@@ -32,6 +32,13 @@
 		border: 2px solid var(--primary-color);
 		margin-bottom: 1rem;
 	}
+
+	@media (max-width: 640px) {
+		main {
+			border: 0px;
+			padding: .5rem;
+		}
+	}
 </style>
 
 <svelte:head>

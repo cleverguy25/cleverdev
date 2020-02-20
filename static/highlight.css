@@ -1,9 +1,10 @@
 code[class*="language-"], pre[class*="language-"] {
 	text-align: left;
-	white-space: pre;
+	white-space: pre-wrap;
+    overflow-wrap: break-word;
 	word-spacing: normal;
-	word-break: normal;
-	word-wrap: normal;
+	word-break: break-all;
+	word-wrap: break-word;
 	hyphens: none;
 	color: inherit;
 	text-shadow: none;

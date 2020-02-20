@@ -101,10 +101,6 @@ code {
 	flex-flow: row wrap;
 }
 
-.post {
-	min-width: 50rem;
-}
-
 .space-between-row-layout {
 	display: flex;
 	flex-flow: row wrap;
@@ -112,19 +108,30 @@ code {
 }
 
 .posts {
-	flex: 4 1 0;	
+	flex: 3 1 0;	
 	padding-right: 2rem;
-	max-width: 50rem;
+	min-width: 25rem;
 }
 
 .page {
-	flex: 4 1 0;	
+	flex: 3 1 0;	
 	padding-right: 2rem;
-	max-width: 50rem;
+	min-width: 25rem;
 }
 
 aside {
 	flex: 1 1 0;	
+	min-width: 12rem;
+}
+
+@media (max-width: 640px) {
+	.posts {
+		padding-right: 0rem;
+	}
+
+	.page {
+		padding-right: 0rem;
+	}
 }
 
 aside > * {
