@@ -22,6 +22,7 @@
 		height: 99vh;
 	}
 	main {
+		min-width: 22rem;
 		max-width: 75rem;
 		background-color: var(--background-color);
 		color: var(--primary-color);

@@ -5,7 +5,7 @@
     footer {
         height: 2rem;
         padding: .5rem;
-        
+        min-width: 22rem;
         width: 100%;
         background-color: var(--header-background-color);
         color: var(--header-color);

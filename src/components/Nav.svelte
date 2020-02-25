@@ -7,7 +7,8 @@
 
 <style>
   header {
-    width: 100%;
+	width: 100%;
+	min-width: 22rem;
     height: 3.5rem;
     background-color: var(--header-background-color);
 	color: var(--header-color);
