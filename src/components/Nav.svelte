@@ -7,14 +7,15 @@
 
 <style>
   header {
-	width: 100%;
-	min-width: 22rem;
+	  width: 100%;
+	  min-width: 22rem;
     height: 3.5rem;
     background-color: var(--header-background-color);
-	color: var(--header-color);
+	  color: var(--header-color);
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+    padding: .5rem;
   }
 
   @media (max-width: 26rem) {
@@ -50,13 +51,12 @@
     border-radius: 0.5rem;
     border: 0.1rem solid var(--header-color);
     display: inline-block;
-    margin-left: 1rem;
+    margin-left: .5rem;
     margin-top: 0.5rem;
   }
 
   .title-bar {
     margin-left: 0.5rem;
-    margin-top: 0.25rem;
     display: flex;
     flex-flow: row wrap;
 	justify-content: space-between;
