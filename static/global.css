@@ -110,13 +110,12 @@ code {
 .posts {
 	flex: 3 1 0;	
 	padding-right: 2rem;
-	min-width: 25rem;
 }
 
 .page {
 	flex: 3 1 0;	
 	padding-right: 2rem;
-	min-width: 25rem;
+
 }
 
 aside {
@@ -124,13 +123,24 @@ aside {
 	min-width: 12rem;
 }
 
+
 @media (max-width: 640px) {
 	.posts {
-		padding-right: 0rem;
+		padding-right: .5rem;
 	}
 
 	.page {
-		padding-right: 0rem;
+		padding-right: .5rem;
+	}
+}
+
+@media (min-width: 480px) {
+	.posts {
+		min-width: 30rem;
+	}
+
+	.page {
+		min-width: 30rem;
 	}
 }
 
