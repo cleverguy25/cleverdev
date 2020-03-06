@@ -1,9 +1,7 @@
 import prism from "prismjs";
 import marked from "marked";
-import fs from "fs";
-import path from "path";
-import request from "request";
 import cheerio from 'cheerio';
+import { downloadAsset, SQUIDEX_PREFIX } from "./_downloadAsset";
 require('prismjs/components/prism-jsx.min');
 
 const renderer = new marked.Renderer();
@@ -21,7 +19,6 @@ export default function renderMarkdown(text) {
 
     const dom = cheerio.load(html);
     const images = dom("img");
-    const prefix = `https://cloud.squidex.io/api/assets/${process.env.SQUIDEX_PROJECT}/`;
 
     for (let i = 0; i < images.length; i++) {
       const img = images[i];
@@ -30,23 +27,15 @@ export default function renderMarkdown(text) {
       const height = img.attribs.height;
       let imageSpec = getImageSpec(width, height);
       const assetUrl = `${src}${imageSpec}`;
-      const index = src.indexOf(prefix);
+      const index = src.indexOf(SQUIDEX_PREFIX);
       
       if (src && index > -1 ) {
-        const relativePath = getRelativePath(src, prefix);
-        const localPath = path.resolve(`./__sapper__/export${relativePath}`);
-        fs.mkdirSync(path.dirname(localPath), { recursive: true});
-        download(assetUrl, localPath);
+        const relativePath = downloadAsset(assetUrl);
         img.attribs.src = relativePath;
       }
     }
 
     return dom.html();
-}
-
-function getRelativePath(src, prefix) {
-  const queryPartIndex = src.indexOf('?');
-  return '/assets/' + src.slice(0, queryPartIndex).replace(prefix, "");
 }
 
 function getImageSpec(width, height) {
@@ -59,7 +48,3 @@ function getImageSpec(width, height) {
   }
   return imageSpec;
 }
-
-function download(uri, filename){
-  request(uri).pipe(fs.createWriteStream(filename));
-};

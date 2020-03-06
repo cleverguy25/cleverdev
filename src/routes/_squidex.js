@@ -98,6 +98,25 @@ export class SquidexClient {
     this.token = `Bearer ${json["access_token"]}`;
   }
 
+  async getAsset(id) {
+    const token = await this.getAuthenticationToken();
+    const response = await fetch(
+      `${this.config.url}/api/apps/${this.config.project}/assets/${id}`,
+      {
+        headers: {
+          Authorization: token,
+          "X-Flatten": "true"
+        }
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText);
+    }
+    return await response.json();
+  }
+
   async query(schema) {
     const token = await this.getAuthenticationToken();
     const response = await fetch(

@@ -1,5 +1,6 @@
 import renderMarkdown from "../_render.js";
 import readingTime from "reading-time";
+import { downloadAsset, SQUIDEX_BASE_URL } from "../_downloadAsset";
 import { SquidexClient } from "../_squidex.js";
 
 let posts;
@@ -28,7 +29,7 @@ export async function getPosts() {
   });
 
   const items = await client.query("posts");
-  posts = items.map(item => {
+  posts = await Promise.all(items.map(async item => {
     const post = item.data;
     const id = item.id;
     const title = post.title;
@@ -41,7 +42,8 @@ export async function getPosts() {
     const html = renderMarkdown(text);
     const excerpt = renderMarkdown(description);
     const readingDuration = readingTime(text);
-
+    const thumb = await downloadImage(client, post);
+    
     return {
       id,
       title,
@@ -51,9 +53,10 @@ export async function getPosts() {
       publishedDate,
       readingDuration,
       tags,
-      author
+      author,
+      thumb
     };
-  });
+  }));
 
   posts.sort((a, b) => {
     const dateA = new Date(a.publishedDate);
@@ -66,3 +69,17 @@ export async function getPosts() {
 
   return posts;
 }
+
+async function downloadImage(client, post) {
+  const thumbnailId = post.thumbnail.find(_ => true);
+  const asset = await client.getAsset(thumbnailId);
+  const assetRelativeUrl = asset["_links"]["content"]["href"];
+  let image;
+  if (thumbnailId) {
+    const url = `${SQUIDEX_BASE_URL}${assetRelativeUrl}`;
+    image = downloadAsset(url);
+  }
+
+  return image;
+}
+
